@@ -1,5 +1,7 @@
 @file:Suppress("UnstableApiUsage")
 
+
+
 include(":baselineprofile")
 
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
@@ -99,3 +101,4 @@ include(":core:preview")
 
 include(":feature:home")
 include(":feature:details")
+include(":feature:notinteresting")

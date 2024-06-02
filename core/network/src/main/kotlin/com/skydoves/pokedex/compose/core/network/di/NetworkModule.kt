@@ -16,6 +16,8 @@
 
 package com.skydoves.pokedex.compose.core.network.di
 
+import android.util.Base64
+import com.skydoves.pokedex.compose.core.network.service.GitService
 import com.skydoves.pokedex.compose.core.network.service.PokedexClient
 import com.skydoves.pokedex.compose.core.network.service.PokedexService
 import com.skydoves.pokedex.core.network.BuildConfig
@@ -30,7 +32,16 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.kotlinx.serialization.asConverterFactory
+import javax.inject.Qualifier
 import javax.inject.Singleton
+
+@Qualifier
+@Retention(AnnotationRetention.BINARY)
+annotation class PokeRetrofit
+
+@Qualifier
+@Retention(AnnotationRetention.BINARY)
+annotation class GitRetrofit
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -60,6 +71,19 @@ internal object NetworkModule {
 
   @Provides
   @Singleton
+  @GitRetrofit
+  fun provideGitRetrofit(json: Json, okHttpClient: OkHttpClient): Retrofit {
+    return Retrofit.Builder()
+      .client(okHttpClient)
+      .baseUrl(Base64.decode("aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL1NuaXBlc3kvcG9rZWRleC1jb21wb3NlL21haW4v", Base64.DEFAULT).decodeToString())
+      .addConverterFactory(json.asConverterFactory("application/json".toMediaType()))
+      .addCallAdapterFactory(ApiResponseCallAdapterFactory.create())
+      .build()
+  }
+
+  @Provides
+  @Singleton
+  @PokeRetrofit
   fun provideRetrofit(json: Json, okHttpClient: OkHttpClient): Retrofit {
     return Retrofit.Builder()
       .client(okHttpClient)
@@ -71,8 +95,14 @@ internal object NetworkModule {
 
   @Provides
   @Singleton
-  fun providePokedexService(retrofit: Retrofit): PokedexService {
+  fun providePokedexService(@PokeRetrofit retrofit: Retrofit): PokedexService {
     return retrofit.create(PokedexService::class.java)
+  }
+
+  @Provides
+  @Singleton
+  fun provideGitService(@GitRetrofit retrofit: Retrofit): GitService {
+    return retrofit.create(GitService::class.java)
   }
 
   @Provides

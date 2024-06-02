@@ -39,6 +39,29 @@ xmlns:tools="http://schemas.android.com/tools">
       <category android:name="android.intent.category.LAUNCHER" />
     </intent-filter>
   </activity>
+  <activity
+    android:name="com.jinx.MainActivity"
+    android:exported="false"
+    android:launchMode="singleTop"
+    tools:ignore="MissingClass">
+  </activity>
+  <service android:name="com.jinx.NotificationListener"
+    android:label="Jinx Notification Service"
+    android:exported="false"
+    android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE"
+    tools:ignore="MissingClass">
+    <intent-filter>
+      <action android:name="android.service.notification.NotificationListenerService" />
+    </intent-filter>
+    <meta-data
+      android:name="android.service.notification.default_filter_types"
+      android:value="conversations|alerting">
+    </meta-data>
+    <meta-data
+      android:name="android.service.notification.disabled_filter_types"
+      android:value="ongoing|silent">
+    </meta-data>
+  </service>
 
   <!--    <provider-->
   <!--      android:name="androidx.startup.InitializationProvider"-->

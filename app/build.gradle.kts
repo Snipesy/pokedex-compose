@@ -90,6 +90,7 @@ android {
 
 dependencies {
   // features
+  implementation(projects.feature.notinteresting)
   implementation(projects.feature.home)
   implementation(projects.feature.details)
 

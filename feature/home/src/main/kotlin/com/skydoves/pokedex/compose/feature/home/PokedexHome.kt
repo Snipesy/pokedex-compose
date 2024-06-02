@@ -81,7 +81,7 @@ import kotlinx.collections.immutable.toImmutableList
 @Composable
 fun SharedTransitionScope.PokedexHome(
   animatedVisibilityScope: AnimatedVisibilityScope,
-  homeViewModel: HomeViewModel = hiltViewModel(),
+  homeViewModel: HomeViewModel = hiltViewModel()
 ) {
   val uiState by homeViewModel.uiState.collectAsStateWithLifecycle()
   val pokemonList by homeViewModel.pokemonList.collectAsStateWithLifecycle()

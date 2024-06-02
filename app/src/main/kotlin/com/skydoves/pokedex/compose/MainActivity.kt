@@ -38,6 +38,7 @@ class MainActivity : ComponentActivity() {
     enableEdgeToEdge()
     super.onCreate(savedInstanceState)
 
+
     setContent {
       CompositionLocalProvider(
         LocalComposeNavigator provides composeNavigator,

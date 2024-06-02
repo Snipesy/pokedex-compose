@@ -44,4 +44,5 @@ class ApiResponseTest {
       assertThat(apiResponse.data, `is`("foo"))
     }
   }
+
 }

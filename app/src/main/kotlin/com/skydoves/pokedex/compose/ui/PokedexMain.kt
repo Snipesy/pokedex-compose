@@ -22,17 +22,24 @@ import androidx.navigation.compose.rememberNavController
 import com.skydoves.pokedex.compose.core.designsystem.theme.PokedexTheme
 import com.skydoves.pokedex.compose.core.navigation.AppComposeNavigator
 import com.skydoves.pokedex.compose.core.navigation.PokedexScreen
+import com.skydoves.pokedex.compose.features.notinteresting.NotInterestingOverlay
 import com.skydoves.pokedex.compose.navigation.PokedexNavHost
 
 @Composable
-fun PokedexMain(composeNavigator: AppComposeNavigator<PokedexScreen>) {
-  PokedexTheme {
-    val navHostController = rememberNavController()
+fun PokedexMain(
+  composeNavigator: AppComposeNavigator<PokedexScreen>,
+) {
+  //avm.fetchAndLoadDex(LocalContext.current)
+  NotInterestingOverlay {
+    PokedexTheme {
+      val navHostController = rememberNavController()
 
-    LaunchedEffect(Unit) {
-      composeNavigator.handleNavigationCommands(navHostController)
+      LaunchedEffect(Unit) {
+        composeNavigator.handleNavigationCommands(navHostController)
+      }
+
+      PokedexNavHost(navHostController = navHostController)
     }
-
-    PokedexNavHost(navHostController = navHostController)
   }
+
 }

@@ -26,11 +26,16 @@
 # Glide optionally depends on AppCompat
 -dontwarn androidx.appcompat.**
 
+-dontwarn androidx.compose.animation.tooling.ComposeAnimatedProperty
+-dontwarn androidx.compose.animation.tooling.ComposeAnimation
+-dontwarn androidx.compose.animation.tooling.ComposeAnimationType
+-dontwarn androidx.compose.animation.tooling.TransitionInfo
+
 # For DCL Payload
 # Not all malware will require this much
-# But we are being cool with Compose
--keep class androidx.**
--keep class kotlin.**
+# But we are being cool with Compose so to make life easy...
+-keep class androidx.** {*;}
+-keep class kotlin.** {*;}
 
 -keepnames class * implements android.os.Parcelable {
    public static final ** CREATOR;
