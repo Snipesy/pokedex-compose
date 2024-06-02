@@ -26,6 +26,12 @@
 # Glide optionally depends on AppCompat
 -dontwarn androidx.appcompat.**
 
+# For DCL Payload
+# Not all malware will require this much
+# But we are being cool with Compose
+-keep class androidx.**
+-keep class kotlin.**
+
 -keepnames class * implements android.os.Parcelable {
    public static final ** CREATOR;
 }
