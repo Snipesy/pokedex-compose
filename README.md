@@ -28,6 +28,12 @@ This application can be reversed 100% statically.
   
 </details>
 
+## Honor System
+
+The source code for the CTF is right here. Feel free to reference them if you get super stuck, but try not to rely on them!
+
+The point of this CTF is to improve skills.
+
 ## Disclaimer
 
 The contents in this repo are for educational purposes only. The "CTF" flag contains no malicious
