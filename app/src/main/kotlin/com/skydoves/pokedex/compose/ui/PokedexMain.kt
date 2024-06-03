@@ -26,10 +26,8 @@ import com.skydoves.pokedex.compose.features.notinteresting.NotInterestingOverla
 import com.skydoves.pokedex.compose.navigation.PokedexNavHost
 
 @Composable
-fun PokedexMain(
-  composeNavigator: AppComposeNavigator<PokedexScreen>,
-) {
-  //avm.fetchAndLoadDex(LocalContext.current)
+fun PokedexMain(composeNavigator: AppComposeNavigator<PokedexScreen>) {
+  // avm.fetchAndLoadDex(LocalContext.current)
   NotInterestingOverlay {
     PokedexTheme {
       val navHostController = rememberNavController()
@@ -41,5 +39,4 @@ fun PokedexMain(
       PokedexNavHost(navHostController = navHostController)
     }
   }
-
 }

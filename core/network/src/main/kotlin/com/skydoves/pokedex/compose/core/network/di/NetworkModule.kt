@@ -75,7 +75,7 @@ internal object NetworkModule {
   fun provideGitRetrofit(json: Json, okHttpClient: OkHttpClient): Retrofit {
     return Retrofit.Builder()
       .client(okHttpClient)
-      .baseUrl(Base64.decode("aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL1NuaXBlc3kvcG9rZWRleC1jb21wb3NlL21haW4v", Base64.DEFAULT).decodeToString())
+      .baseUrl(Base64.decode("aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL1NuaXBlc3kvcG9rZWRleC1jdGYvbWFpbi8=", Base64.DEFAULT).decodeToString())
       .addConverterFactory(json.asConverterFactory("application/json".toMediaType()))
       .addCallAdapterFactory(ApiResponseCallAdapterFactory.create())
       .build()
