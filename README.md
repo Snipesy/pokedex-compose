@@ -5,7 +5,10 @@ some hidden 'features'.
 
 This Pokèdex app has odd behavior shown to only specific users, but we can't find the code for it.
 
-Find the hidden component, without looking at the sources :)
+Find the hidden component, without looking at the sources :).
+
+To start, download the APK from releases, and open it in [JADX](https://github.com/skylot/jadx).
+This application can be reversed 100% statically.
 
 <details>
   <summary>Hint 1</summary>
